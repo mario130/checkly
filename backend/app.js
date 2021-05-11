@@ -7,6 +7,7 @@ require("dotenv").config();
 require("./middleware/passportConfig");
 
 const authRoutes = require("./routes/authRoutes");
+const listsRoutes = require("./routes/listsRoutes");
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
 
 // Add routes
 app.use("/auth", authRoutes);
+app.use("/lists", listsRoutes);
 
 const PORT = process.env.PORT | 4001;
 app.listen(PORT, () => {
