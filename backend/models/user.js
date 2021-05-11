@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
 const UserSchema = mongoose.Schema({
   username: {
@@ -16,8 +15,17 @@ const UserSchema = mongoose.Schema({
   saltSecret: {
     type: String,
   },
+  lists: {
+    type: Object,
+    default: {
+      todos: [],
+      doing: [],
+      done: [],
+    },
+  },
 });
 
+// Hash password before saving
 UserSchema.pre("save", function (next) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(this.password, salt, (err, hash) => {
