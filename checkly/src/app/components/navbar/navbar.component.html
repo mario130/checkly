@@ -1,6 +1,6 @@
 <div>
-  <div class="bg-primary p-3 flex">
-    <svg (click)="switchMobileNavState()" xmlns="http://www.w3.org/2000/svg" class="text-white h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24"
+  <div class="bg-primary p-3 flex items-center">
+    <svg (click)="switchMobileNavState()" xmlns="http://www.w3.org/2000/svg" class="text-white h-6 w-6 cursor-pointer md:hidden" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
@@ -9,19 +9,28 @@
     <h2 class="font-logo text-white flex-1 text-center font-bold">Checkly</h2>
 
 
+
+  <!-- Desktop links -->
+  <ul class="hidden md:flex space-x-6 text-sm font-one text-white">
+    <li>Home</li>
+    <li>Lists</li>
+    <li>Log out</li>
+  </ul>
   </div>
 
   <!-- Mobile nav open -->
-  <div *ngIf="isMobileNavOpen" class="h-full w-full bg-white absolute top-0 p-8 flex flex-col">
+  <div *ngIf="isMobileNavOpen" class="h-full w-full bg-white absolute top-0 p-8 flex flex-col md:hidden">
     <div (click)="switchMobileNavState()">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </div>
+
     <ul class="flex-1 grid place-content-center">
       <li>Home</li>
       <li>Lists</li>
       <li>Log out</li>
     </ul>
   </div>
+
 </div>
