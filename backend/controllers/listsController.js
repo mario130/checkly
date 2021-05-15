@@ -4,7 +4,7 @@ module.exports.getUserLists = (req, res, next) => {
   User.findOne({ _id: req._id }, (err, user) => {
     if (err) return next(err);
 
-    res.status(200).send(user.lists);
+    res.status(200).send({ status: "success", lists: user.lists });
   });
 };
 

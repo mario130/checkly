@@ -17,11 +17,20 @@ const UserSchema = mongoose.Schema({
   },
   lists: {
     type: Object,
-    default: {
-      todos: [],
-      doing: [],
-      done: [],
-    },
+    default: [
+      {
+        name: "todos",
+        content: [],
+      },
+      {
+        name: "doing",
+        content: [],
+      },
+      {
+        name: "done",
+        content: [],
+      },
+    ],
   },
 });
 
@@ -43,7 +52,7 @@ UserSchema.methods.verifyPassword = function (password) {
 
 UserSchema.methods.generateJwt = function () {
   return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: "4h",
+    expiresIn: "4d",
   });
 };
 

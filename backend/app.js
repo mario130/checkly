@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const cors = require("cors");
 
 require("dotenv").config();
 require("./middleware/passportConfig");
@@ -10,6 +11,7 @@ const authRoutes = require("./routes/authRoutes");
 const listsRoutes = require("./routes/listsRoutes");
 
 const app = express();
+app.use(cors());
 
 app.use(passport.initialize());
 app.use(bodyParser.json());

@@ -6,15 +6,17 @@ module.exports.verifyJwtToken = (req, res, next) => {
     token = req.headers["authorization"].split(" ")[1];
 
   if (!token)
-    return res
-      .status(403)
-      .send({ auth: false, message: "There is no token provided!!" });
+    return res.status(403).send({
+      message: "There is no token provided!!",
+      status: "failed",
+    });
   else {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err)
-        return res
-          .status(500)
-          .send({ auth: false, message: "Token incorrect or expired!" });
+        return res.status(500).send({
+          message: "Token incorrect or expired!",
+          status: "failed",
+        });
       else {
         req._id = decoded._id;
         next();
