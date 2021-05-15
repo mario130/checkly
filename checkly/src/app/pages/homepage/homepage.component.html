@@ -1,0 +1,18 @@
+<div class="mt-4">
+
+  <!-- buttons -->
+  <div class="flex mx-4">
+    <button class="text-white bg-secondary px-3 py-1 rounded-md font-medium">Add todo</button>
+  </div>
+
+  <!-- Todos -->
+  <!-- <div *ngFor="let list of fetchedLists"> -->
+    <div *ngFor="let list of listsResponse.lists">
+      <div *ngFor="let todo of list.content">
+        {{todo.name.toString()}}
+      </div>
+    </div>
+
+  <!-- </div> -->
+  <h2>dd</h2>
+</div>
