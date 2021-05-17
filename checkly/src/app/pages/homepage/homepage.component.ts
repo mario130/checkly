@@ -9,7 +9,7 @@ import { ListsService } from './lists.service';
 })
 export class HomepageComponent implements OnInit {
   listsResponse!: IListsResponse;
-  mainList!: { name: string }[]
+  mainList!: { name: string }[] // That's the "todo" list "doing" & "done" will be implemented later
 
   constructor(private ListsService: ListsService) { }
 
