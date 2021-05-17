@@ -23,7 +23,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected!"))
-  .catch(() => console.log("Couldn't connect!"));
+  .catch((e) => console.log("Couldn't connect!", e));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
