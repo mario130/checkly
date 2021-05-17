@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    working-directory: ./checkly
+
 jobs:
   firebase-deploy:
     runs-on: ubuntu-latest
@@ -15,11 +19,10 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install
-        working-directory: checkly
+        # working-directory: checkly
       - run: npm run build:prod
-        working-directory: checkly
+        # working-directory: checkly
       - uses: w9jds/firebase-action@master
-        working-directory: checkly
         with:
           args: deploy --only hosting
         env:
