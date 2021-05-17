@@ -1,18 +1,17 @@
-<div class="mt-4">
+<div class="">
+  <div class="wallpaper-area"></div>
 
   <!-- buttons -->
-  <div class="flex mx-4">
-    <button class="text-white bg-secondary px-3 py-1 rounded-md font-medium">Add todo</button>
-  </div>
+  <!-- <div class="flex mx-4">
+    <button class="text-white bg-secondary px-3 py-1 rounded-md font-medium">
+      Add todo
+    </button>
+  </div> -->
+
+  <!-- <img src="/assets/mountains-cropped-original.webp" alt="" /> -->
 
   <!-- Todos -->
-  <!-- <div *ngFor="let list of fetchedLists"> -->
-    <div *ngFor="let list of listsResponse.lists">
-      <div *ngFor="let todo of list.content">
-        {{todo.name.toString()}}
-      </div>
-    </div>
-
-  <!-- </div> -->
-  <h2>dd</h2>
+  <div *ngFor="let todo of mainList">
+    {{ todo.name.toString() }}
+  </div>
 </div>

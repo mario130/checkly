@@ -1,0 +1,10 @@
+.wallpaper-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(110deg, #ae68ed99 0%, #7ba0f9aa 100%),
+    url("/assets/mountains-cropped-original.webp") no-repeat center center;
+  background-size: cover;
+}
