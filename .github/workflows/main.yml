@@ -19,6 +19,7 @@ jobs:
       - run: npm run build:prod
         working-directory: checkly
       - uses: w9jds/firebase-action@master
+        working-directory: checkly
         with:
           args: deploy --only hosting
         env:
