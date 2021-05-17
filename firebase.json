@@ -1,8 +1,8 @@
 {
   "hosting": {
-    "public": "dist/checkly",
+    "public": "checkly/dist/checkly",
     "ignore": [
-      "firebase.json",
+      "checkly/firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
