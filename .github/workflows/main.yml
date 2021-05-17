@@ -14,9 +14,10 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: "12.x"
-        working-directory: checkly
       - run: npm install
+        working-directory: checkly
       - run: npm run build:prod
+        working-directory: checkly
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
