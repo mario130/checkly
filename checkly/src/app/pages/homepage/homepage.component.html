@@ -1,20 +1,47 @@
 <div class="">
   <div class="wallpaper-area"></div>
 
-  <!-- buttons -->
-  <!-- <div class="flex mx-4">
-    <button class="text-white bg-secondary px-3 py-1 rounded-md font-medium">
-      Add todo
-    </button>
-  </div> -->
-
-  <!-- <img src="/assets/mountains-cropped-original.webp" alt="" /> -->
-
   <!-- Todos -->
-  <div class="after-wallpaper">
-    Testing..
-    <div *ngFor="let todo of mainList">
-      {{ todo.name.toString() }}
+  <div class="after-wallpaper mx-auto max-w-xl relative -top-44 px-4 z-10">
+    <div class="font-bold mb-4">
+      <h2 class="text-4xl text-white tracking-widest">T O D O</h2>
+    </div>
+
+    <!-- New todo -->
+    <div class="w-full rounded-sm bg-white overflow-hidden font-one mb-4">
+      <input
+        type="text"
+        class="
+          px-4
+          py-3
+          w-full
+          ml-10
+          focus:outline-none
+          font-medium
+          text-gray-700 text-lg
+        "
+      />
+    </div>
+
+    <!-- Looping over todos -->
+    <div class="w-full rounded-sm bg-white overflow-hidden font-one shadow-sm">
+      <div *ngFor="let todo of mainList">
+        <div class="border-b">
+          <h4 class="px-4 py-3 w-full ml-10 font-medium text-gray-700 text-lg">
+            {{ todo.name.toString() }}
+          </h4>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div
+        *ngIf="mainList.length > 0"
+        class="text-xs font-three px-4 py-3 flex justify-between"
+      >
+        <p class="text-gray-400 font-medium">
+          {{ mainList.length }} todos left
+        </p>
+        <p class="text-gray-700 font-medium">Clear Completed</p>
+      </div>
     </div>
   </div>
 </div>

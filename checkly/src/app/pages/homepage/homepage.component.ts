@@ -18,6 +18,7 @@ export class HomepageComponent implements OnInit {
       this.listsResponse = response
       // console.log(response)
       this.mainList = response.lists[0].content
+      console.log(this.mainList)
     })
     this.ListsService.getLists()
   }

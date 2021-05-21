@@ -1,4 +1,4 @@
-<div class="z-10 absolute w-full h-full">
+<div class="z-20 absolute w-full" [class.h-full]="isMobileNavOpen">
   <div class="absolute w-full top-0 p-3 flex items-center">
     <svg
       (click)="switchMobileNavState()"
@@ -17,7 +17,17 @@
     </svg>
 
     <!-- Logo -->
-    <h2 class="font-logo text-white flex-1 text-center md:text-left font-bold">
+    <h2
+      class="
+        font-logo
+        text-white
+        flex-1
+        text-right
+        md:text-left
+        font-bold
+        text-sm
+      "
+    >
       Checkly
     </h2>
 
