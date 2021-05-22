@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // Get the auth token from the service.
-    const authToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGEwNDkxOGNmZDVlMjM0OWNjNzEzN2EiLCJpYXQiOjE2MjE1NjcyOTAsImV4cCI6MTYyMTkxMjg5MH0.A4Uq3eKuydowplRKtWK9iAAu9sYeicbl6WjRkIYVUS4'
+    const authToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGEwNDkxOGNmZDVlMjM0OWNjNzEzN2EiLCJpYXQiOjE2MjE2NDk0MTEsImV4cCI6MTYyMTk5NTAxMX0.X11x-5jGgQIBjhHUtKcSJig9Ir6_8uouzI7U-qGWZPg'
 
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.

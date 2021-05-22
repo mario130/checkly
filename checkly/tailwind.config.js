@@ -1,8 +1,8 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ["./src/**/*.{html,ts}"],
-  },
+  // purge: {
+  //   enabled: true,
+  //   content: ["./src/**/*.{html,ts}"],
+  // },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -19,6 +19,7 @@ module.exports = {
         two: "Merriweather",
         one: "Noto Sans",
         three: "Roboto",
+        four: "Josefin Sans",
       },
     },
   },
