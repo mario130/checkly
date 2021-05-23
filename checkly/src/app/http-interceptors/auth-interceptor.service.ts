@@ -8,14 +8,12 @@ export class AuthInterceptor implements HttpInterceptor {
   token = localStorage.getItem('token')
 
   constructor(private authService: AuthService) {
-    console.log(this.token)
     this.authService.tokenSubject.subscribe(newToken => {
       this.token = newToken
     })
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    // Get the auth token from the service.
     const authToken = `Bearer ${this.token}`
 
     // Clone the request and replace the original headers with
@@ -24,7 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', authToken)
     });
 
-    // send cloned request with header to the next handler.
-    return next.handle(authReq);
+    if (this.token) {
+      return next.handle(authReq);
+    } else {
+      return next.handle(req)
+    }
   }
 }

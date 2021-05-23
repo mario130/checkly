@@ -12,6 +12,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
   errorMsgLogin!: string
+  errorMsgRegister!: string
+  mode = 'login'
 
 
   ngOnInit(): void {
@@ -25,11 +27,30 @@ export class AuthComponent implements OnInit {
     const password = loginForm.value.password
 
     this.authService.loginUser(username, password).subscribe(res => {
-      console.log(res);
       loginForm.reset()
       this.router.navigate(['/homepage'])
     }, err => {
       this.errorMsgLogin = err.error.message
     })
+  }
+
+  registerUser(registerForm: NgForm) {
+    const username = registerForm.value.username
+    const password = registerForm.value.password
+
+    this.authService.registerUser(username, password).subscribe(res => {
+      registerForm.reset()
+      this.router.navigate(['/homepage'])
+    }, err => {
+      this.errorMsgRegister = err.error.message
+    })
+  }
+
+  changeMode() {
+    if (this.mode === 'login') {
+      this.mode = 'register'
+    } else {
+      this.mode = 'login'
+    }
   }
 }

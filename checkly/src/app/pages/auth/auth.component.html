@@ -5,7 +5,13 @@
       Checkly
     </h2>
 
-    <form action="#" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+    <!-- Login form -->
+    <form
+      *ngIf="mode === 'login'"
+      action="#"
+      #loginForm="ngForm"
+      (ngSubmit)="loginUser(loginForm)"
+    >
       <!-- Errors -->
 
       <div
@@ -52,8 +58,67 @@
         Login
       </button>
     </form>
-    <div class="text-right">
-      Don't have an account? <button class="font-bold">Register now</button>
+    <!-- Register form -->
+    <form
+      *ngIf="mode === 'register'"
+      action="#"
+      #registerForm="ngForm"
+      (ngSubmit)="registerUser(registerForm)"
+    >
+      <!-- Errors -->
+
+      <div
+        *ngIf="errorMsgRegister"
+        class="mb-4 text-red-600 bg-red-300 rounded-md"
+        role="alert"
+      >
+        {{ errorMsgRegister }}
+      </div>
+      <!-- Register fields -->
+      <input
+        type="text"
+        name="username"
+        class="w-full px-4 py-2 rounded-md mb-4"
+        placeholder="Username"
+        required
+        ngModel
+        minlength="3"
+      />
+      <input
+        type="password"
+        name="password"
+        class="w-full px-4 py-2 rounded-md mb-4"
+        placeholder="Password"
+        required
+        ngModel
+        minlength="3"
+      />
+
+      <button
+        type="submit"
+        class="
+          w-full
+          bg-green-500
+          text-white
+          px-4
+          py-2
+          rounded-md
+          mb-4
+          disabled:opacity-50
+        "
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+    </form>
+
+    <div *ngIf="mode === 'login'" class="text-right">
+      Don't have an account?
+      <button class="font-bold" (click)="changeMode()">Register now</button>
+    </div>
+    <div *ngIf="mode === 'register'" class="text-right">
+      Already have an account?
+      <button class="font-bold" (click)="changeMode()">Login instead</button>
     </div>
   </div>
 </div>

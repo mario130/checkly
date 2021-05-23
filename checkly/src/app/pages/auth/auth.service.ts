@@ -34,6 +34,17 @@ export class AuthService {
     }))
   }
 
+  registerUser(username: string, password: string) {
+    return this.http.post<IAuthResponse>(environment.apiUrl + '/auth/register', {
+      username: username,
+      password: password
+    }).pipe(tap(response => {
+      localStorage.setItem('token', response.token)
+      this.tokenSubject.next(response.token)
+      this.isAuthenticated.next(true)
+    }))
+  }
+
   autoRelog(): void {
     this.token = localStorage.getItem('token') || '{}'
 

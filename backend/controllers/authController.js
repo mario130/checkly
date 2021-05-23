@@ -17,7 +17,8 @@ module.exports.register = (req, res, next) => {
       }
     }
 
-    res.send(doc);
+    // res.send(doc);
+    res.status(200).json({ token: user.generateJwt(), username: doc.username });
   });
 };
 
