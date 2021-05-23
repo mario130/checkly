@@ -1,4 +1,8 @@
-<div class="z-20 absolute w-full font-four" [class.h-full]="isMobileNavOpen">
+<div
+  *ngIf="isAuthenticated"
+  class="z-20 absolute w-full font-four"
+  [class.h-full]="isMobileNavOpen"
+>
   <div class="absolute w-full top-0 p-3 flex items-center">
     <svg
       (click)="switchMobileNavState()"
@@ -35,7 +39,7 @@
     <ul class="hidden md:flex space-x-6 text-sm text-white">
       <li>Home</li>
       <li>Lists</li>
-      <li>Log out</li>
+      <li><button (click)="logout()">Log out</button></li>
     </ul>
   </div>
 
@@ -75,8 +79,8 @@
     <ul class="flex-1 grid place-content-center">
       <li>Home</li>
       <li>Lists</li>
-      <li>Log out</li>
+      <li><button (click)="logout()">Log out</button></li>
     </ul>
   </div>
 </div>
-bottom-0
+<h2 class="opacity-0">.</h2>

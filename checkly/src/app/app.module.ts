@@ -7,17 +7,21 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor.service';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomepageComponent
+    HomepageComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

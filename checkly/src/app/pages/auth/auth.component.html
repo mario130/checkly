@@ -1,0 +1,59 @@
+<div class="h-full flex flex-col mx-8 font-four">
+  <div class="text-center">
+    <!-- Logo -->
+    <h2 class="font-logo font-bold mt-40 mb-14 text-3xl text-primary">
+      Checkly
+    </h2>
+
+    <form action="#" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+      <!-- Errors -->
+
+      <div
+        *ngIf="errorMsgLogin"
+        class="mb-4 text-red-600 bg-red-300 rounded-md"
+        role="alert"
+      >
+        {{ errorMsgLogin }}
+      </div>
+      <!-- Login fields -->
+      <input
+        type="text"
+        name="username"
+        class="w-full px-4 py-2 rounded-md mb-4"
+        placeholder="Username"
+        required
+        ngModel
+        minlength="3"
+      />
+      <input
+        type="password"
+        name="password"
+        class="w-full px-4 py-2 rounded-md mb-4"
+        placeholder="Password"
+        required
+        ngModel
+        minlength="3"
+      />
+
+      <button
+        type="submit"
+        class="
+          w-full
+          bg-pr-medium
+          text-white
+          px-4
+          py-2
+          rounded-md
+          mb-4
+          disabled:opacity-50
+        "
+        [disabled]="!loginForm.valid"
+      >
+        Login
+      </button>
+    </form>
+    <div class="text-right">
+      Don't have an account? <button class="font-bold">Register now</button>
+    </div>
+  </div>
+</div>

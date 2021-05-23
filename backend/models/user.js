@@ -20,7 +20,20 @@ const UserSchema = mongoose.Schema({
     default: [
       {
         name: "todos",
-        content: [],
+        content: [
+          {
+            name: "This is your todo list",
+            done: false,
+          },
+          {
+            name: "Try to complete some tasks",
+            done: false,
+          },
+          {
+            name: "Like this one!",
+            done: true,
+          },
+        ],
       },
       {
         name: "doing",
