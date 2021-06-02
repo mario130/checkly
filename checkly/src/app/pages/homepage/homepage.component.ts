@@ -13,6 +13,8 @@ import { ListsService } from './lists.service';
 export class HomepageComponent implements OnInit {
   listsResponse!: IListsResponse;
   mainList!: { name: string, done: boolean }[] // That's the "todo" list "doing" & "done" will be implemented later
+  filteredList!: { name: string, done: boolean }[]
+  filterMode = 'all'
   isAuthenticated = false
 
   constructor(private ListsService: ListsService, private router: Router, private authService: AuthService) {
@@ -29,6 +31,7 @@ export class HomepageComponent implements OnInit {
     this.ListsService.listsFetched.subscribe((response: any) => {
       this.listsResponse = response
       this.mainList = response.lists[0].content
+      this.refilterLists()
       this.countPendingTasks()
     })
     this.ListsService.listsEdited.subscribe(() => {
@@ -40,6 +43,7 @@ export class HomepageComponent implements OnInit {
   addNewTodo(newTodoForm: NgForm): void {
     this.mainList.push({ name: newTodoForm.value.newTodo, done: false })
     this.updateList()
+    this.refilterLists()
     newTodoForm.reset()
   }
 
@@ -50,6 +54,7 @@ export class HomepageComponent implements OnInit {
   toggleDone(todo: { name: string, done: boolean }) {
     todo.done = !todo.done
     this.updateList()
+    this.refilterLists()
   }
 
   deleteTodo(idxToDelete: number) {
@@ -57,10 +62,35 @@ export class HomepageComponent implements OnInit {
     this.updateList()
   }
 
+  deleteDone() {
+    this.mainList = this.mainList.filter(todo => todo.done === false)
+    this.updateList()
+
+  }
+
   updateList() {
     this.ListsService.updateLists([{
       name: 'todos',
       content: [...this.mainList]
     }])
+  }
+
+  refilterLists() {
+    switch (this.filterMode) {
+      case 'all':
+        this.filteredList = this.mainList
+        break;
+      case 'active':
+        this.filteredList = this.mainList.filter(todo => todo.done === false)
+        break;
+      case 'done':
+        this.filteredList = this.mainList.filter(todo => todo.done === true)
+        break;
+    }
+  }
+
+  changeFilter(newFilter: string) {
+    this.filterMode = newFilter
+    this.refilterLists()
   }
 }
