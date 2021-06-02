@@ -12,13 +12,14 @@ export class ListsService {
   listsFetched = new Subject()
   // allLists!: IListsResponse
   listsResponse!: IListsResponse
+  listsEdited = new Subject()
 
-  private url = environment.apiUrl + '/lists/getLists'
+  private url = environment.apiUrl + '/lists/'
 
   constructor(private http: HttpClient) { }
 
   getLists() {
-    this.http.get<IListsResponse>(this.url).subscribe(
+    this.http.get<IListsResponse>(this.url + 'getLists').subscribe(
       (res) => {
         this.listsResponse = res
         this.listsFetched.next(this.listsResponse)
@@ -26,4 +27,14 @@ export class ListsService {
     )
   }
 
+  updateLists(newLists: any) {
+    this.http.post(this.url + 'editLists', {
+      newLists: newLists
+    }).subscribe(
+      (res) => {
+        // console.log(res)
+        this.listsEdited.next(res)
+      }
+    )
+  }
 }
